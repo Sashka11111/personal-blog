@@ -1,0 +1,11 @@
+.button:hover {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 5;
+  -fx-padding: 10 20;
+  -fx-font-size: 14px;
+  -fx-border-color: #000000;
+  -fx-border-width: 1;
+  -fx-border-radius: 5;
+  -fx-transition: background-color 0.3s;
+  -fx-cursor: hand;
+}
