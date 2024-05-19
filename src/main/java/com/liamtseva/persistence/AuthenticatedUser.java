@@ -22,5 +22,13 @@ public class AuthenticatedUser {
   public void setCurrentUser(User user) {
     this.currentUser = user;
   }
-}
 
+  // Додавання методу для отримання зображення поточного користувача
+  public byte[] getCurrentUserImage() {
+    if (currentUser != null) {
+      return currentUser.profileImage();
+    } else {
+      return null;
+    }
+  }
+}

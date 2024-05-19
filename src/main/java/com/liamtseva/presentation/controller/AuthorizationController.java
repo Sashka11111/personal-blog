@@ -1,5 +1,12 @@
-package com.liamtseva;
+package com.liamtseva.presentation.controller;
 
+import com.liamtseva.persistence.AuthenticatedUser;
+import com.liamtseva.persistence.connection.DatabaseConnection;
+import com.liamtseva.domain.exception.EntityNotFoundException;
+import com.liamtseva.persistence.entity.User;
+import com.liamtseva.persistence.repository.contract.UserRepository;
+import com.liamtseva.persistence.repository.impl.UserRepositoryImpl;
+import com.liamtseva.presentation.animation.Shake;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,7 +76,7 @@ public class AuthorizationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mainMenu.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Трекер особистих цілей");
+            stage.setTitle("Особистий блог");
             stage.setScene(new Scene(root));
             stage.showAndWait();
           } else {

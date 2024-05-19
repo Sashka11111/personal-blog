@@ -2,213 +2,156 @@ package com.liamtseva.persistence.repository.impl;
 
 import com.liamtseva.domain.exception.EntityNotFoundException;
 import com.liamtseva.persistence.entity.Post;
-import com.liamtseva.persistence.repository.contract.GoalRepository;
+import com.liamtseva.persistence.repository.contract.PostRepository;
+
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 
-public class GoalRepositoryImpl implements GoalRepository {
+public class PostRepositoryImpl implements PostRepository {
   private DataSource dataSource;
 
-  public GoalRepositoryImpl(DataSource dataSource) {
+  public PostRepositoryImpl(DataSource dataSource) {
     this.dataSource = dataSource;
   }
 
   @Override
-  public void addGoal(Post goal) {
-    String query = "INSERT INTO Goals (id_user, name_goal, description, id_category, start_date, end_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  public void addPost(Post post) {
+    String sql = "INSERT INTO Post (user_id, category_id, title, content) VALUES (?, ?, ?, ?)";
     try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setInt(1, goal.userId());
-      preparedStatement.setString(2, goal.nameGoal());
-      preparedStatement.setString(3, goal.description());
-      preparedStatement.setInt(4, goal.categoryId());
-      preparedStatement.setDate(5, Date.valueOf(goal.startDate()));
-      preparedStatement.setDate(6, Date.valueOf(goal.endDate()));
-      preparedStatement.setString(7, goal.status());
-      preparedStatement.executeUpdate();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, post.userId());
+      statement.setInt(2, post.categoryId());
+      statement.setString(3, post.title());
+      statement.setString(4, post.context());
+      statement.executeUpdate();
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new RuntimeException("Error adding post", e);
     }
   }
 
   @Override
-  public Post getGoalById(int id) throws EntityNotFoundException {
-    String query = "SELECT * FROM Goals WHERE id_goal = ?";
+  public Post getPostById(int id) throws EntityNotFoundException {
+    String sql = "SELECT * FROM Post WHERE post_id = ?";
     try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setInt(1, id);
-      ResultSet resultSet = preparedStatement.executeQuery();
-      if (resultSet.next()) {
-        return extractGoalFromResultSet(resultSet);
-      } else {
-        throw new EntityNotFoundException("Post with id " + id + " not found");
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw new EntityNotFoundException("Error while fetching goal with id " + id);
-    }
-  }
-
-  @Override
-  public List<Post> getAllGoals() {
-    List<Post> goals = new ArrayList<>();
-    String query = "SELECT * FROM Goals"; // Запит для вибору цілей, які належать поточному користувачеві
-    try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      //int currentUserId = getCurrentUserId(); // Отримання ідентифікатора поточного користувача
-     // preparedStatement.setInt(1, currentUserId);
-      try (ResultSet resultSet = preparedStatement.executeQuery()) {
-        while (resultSet.next()) {
-          Post goal = extractGoalFromResultSet(resultSet);
-          goals.add(goal);
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, id);
+      try (ResultSet resultSet = statement.executeQuery()) {
+        if (resultSet.next()) {
+          return extractPostFromResultSet(resultSet);
+        } else {
+          throw new EntityNotFoundException("Post not found with id " + id);
         }
       }
     } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    return goals;
-  }
-  @Override
-  public Post getGoalByName(String name) throws EntityNotFoundException {
-    String query = "SELECT * FROM Goals WHERE name_goal = ?";
-    try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setString(1, name);
-      ResultSet resultSet = preparedStatement.executeQuery();
-      if (resultSet.next()) {
-        return extractGoalFromResultSet(resultSet);
-      } else {
-        throw new EntityNotFoundException("Post with name " + name + " not found");
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw new EntityNotFoundException("Error while fetching goal with name " + name);
-    }
-  }
-  @Override
-  public void updateGoalStatusByName(String goalName, String newStatus) throws EntityNotFoundException {
-    String query = "UPDATE Goals SET status = ? WHERE name_goal = ?";
-    try (Connection connection = dataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement(query)) {
-      statement.setString(1, newStatus);
-      statement.setString(2, goalName);
-      int rowsUpdated = statement.executeUpdate();
-      if (rowsUpdated == 0) {
-        throw new EntityNotFoundException("Post with name " + goalName + " not found");
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      // Обробка помилок бази даних
+      throw new RuntimeException("Error fetching post by id", e);
     }
   }
 
   @Override
-  public List<Post> filterGoalsByUserId(int userId) {
-    List<Post> goals = new ArrayList<>();
-    String query = "SELECT * FROM Goals WHERE id_user = ?"; // Filter by user ID
+  public List<Post> getAllPosts() {
+    String sql = "SELECT * FROM Post";
+    List<Post> posts = new ArrayList<>();
     try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setInt(1, userId);
-      try (ResultSet resultSet = preparedStatement.executeQuery()) {
-        while (resultSet.next()) {
-          Post goal = extractGoalFromResultSet(resultSet);
-          goals.add(goal);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery()) {
+      while (resultSet.next()) {
+        posts.add(extractPostFromResultSet(resultSet));
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Error fetching all posts", e);
+    }
+    return posts;
+  }
+
+  @Override
+  public Post getPostByName(String name) throws EntityNotFoundException {
+    String sql = "SELECT * FROM Post WHERE title = ?";
+    try (Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setString(1, name);
+      try (ResultSet resultSet = statement.executeQuery()) {
+        if (resultSet.next()) {
+          return extractPostFromResultSet(resultSet);
+        } else {
+          throw new EntityNotFoundException("Post not found with title " + name);
         }
       }
     } catch (SQLException e) {
-      e.printStackTrace();
-      // Implement error handling
-    }
-    return goals;
-  }
-  @Override
-  public List<Post> getAllGoalsByUserId(int userId) {
-    List<Post> goals = new ArrayList<>();
-    String query = "SELECT * FROM Goals WHERE id_user = ?"; // Filter by user ID
-    try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setInt(1, userId);
-      try (ResultSet resultSet = preparedStatement.executeQuery()) {
-        while (resultSet.next()) {
-          Post goal = extractGoalFromResultSet(resultSet);
-          goals.add(goal);
-        }
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    return goals;
-  }
-  @Override
-  public void updateGoal(Post goal) throws EntityNotFoundException {
-    String query = "UPDATE Goals SET id_user = ?, name_goal = ?, description = ?, id_category = ?, start_date = ?, end_date = ?, status = ? WHERE id_goal = ?";
-    try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setInt(1, goal.userId());
-      preparedStatement.setString(2, goal.nameGoal());
-      preparedStatement.setString(3, goal.description());
-      preparedStatement.setInt(4, goal.categoryId());
-      preparedStatement.setDate(5, Date.valueOf(goal.startDate()));
-      preparedStatement.setDate(6, Date.valueOf(goal.endDate()));
-      preparedStatement.setString(7, goal.status());
-      preparedStatement.setInt(8, goal.id());
-      int rowsUpdated = preparedStatement.executeUpdate();
-      if (rowsUpdated == 0) {
-        throw new EntityNotFoundException("Post with id " + goal.id() + " not found");
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw new EntityNotFoundException("Error while updating goal with id " + goal.id());
-    }
-  }
-  @Override
-  public void updateGoalStatus(int goalId, String newStatus) throws EntityNotFoundException {
-    String query = "UPDATE Goals SET status = ? WHERE id_goal = ?";
-    try (Connection connection = dataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement(query)) {
-      statement.setString(1, newStatus);
-      statement.setInt(2, goalId);
-      int rowsUpdated = statement.executeUpdate();
-      if (rowsUpdated == 0) {
-        throw new EntityNotFoundException("Post with id " + goalId + " not found");
-      }
-    } catch (SQLException e) {
-      // Обробка помилок бази даних
-      e.printStackTrace();
-    }
-  }
-  @Override
-  public void deleteGoal(int id) throws EntityNotFoundException {
-    String query = "DELETE FROM Goals WHERE id_goal = ?";
-    try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setInt(1, id);
-      int rowsDeleted = preparedStatement.executeUpdate();
-      if (rowsDeleted == 0) {
-        throw new EntityNotFoundException("Post with id " + id + " not found");
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw new EntityNotFoundException("Error while deleting goal with id " + id);
+      throw new RuntimeException("Error fetching post by name", e);
     }
   }
 
-  private Post extractGoalFromResultSet(ResultSet resultSet) throws SQLException {
-    int id = resultSet.getInt("id_goal");
-    int userId = resultSet.getInt("id_user");
-    String nameGoal = resultSet.getString("name_goal");
-    String description = resultSet.getString("description");
-    int categoryId = resultSet.getInt("id_category");
-    LocalDate startDate = resultSet.getDate("start_date").toLocalDate();
-    LocalDate endDate = resultSet.getDate("end_date").toLocalDate();
-    String status = resultSet.getString("status");
-    return new Post(id, userId, nameGoal, description, categoryId, startDate, endDate, status);
+  @Override
+  public List<Post> filterPostsByUserId(int userId) {
+    String sql = "SELECT * FROM Post WHERE user_id = ?";
+    List<Post> posts = new ArrayList<>();
+    try (Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, userId);
+      try (ResultSet resultSet = statement.executeQuery()) {
+        while (resultSet.next()) {
+          posts.add(extractPostFromResultSet(resultSet));
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Error filtering posts by user id", e);
+    }
+    return posts;
+  }
+
+  @Override
+  public List<Post> getAllPostsByUserId(int userId) {
+    return filterPostsByUserId(userId);
+  }
+
+  @Override
+  public void updatePost(Post post) throws EntityNotFoundException {
+    String sql = "UPDATE Post SET user_id = ?, category_id = ?, title = ?, content = ? WHERE post_id = ?";
+    try (Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, post.userId());
+      statement.setInt(2, post.categoryId());
+      statement.setString(3, post.title());
+      statement.setString(4, post.context());
+      statement.setInt(5, post.id());
+
+      int rowsAffected = statement.executeUpdate();
+      if (rowsAffected == 0) {
+        throw new EntityNotFoundException("Post not found with id " + post.id());
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Error updating post", e);
+    }
+  }
+
+  @Override
+  public void deletePost(int id) throws EntityNotFoundException {
+    String sql = "DELETE FROM Post WHERE post_id = ?";
+    try (Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, id);
+
+      int rowsAffected = statement.executeUpdate();
+      if (rowsAffected == 0) {
+        throw new EntityNotFoundException("Post not found with id " + id);
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Error deleting post", e);
+    }
+  }
+
+  private Post extractPostFromResultSet(ResultSet resultSet) throws SQLException {
+    int postId = resultSet.getInt("post_id");
+    int userId = resultSet.getInt("user_id");
+    int categoryId = resultSet.getInt("category_id");
+    String title = resultSet.getString("title");
+    String content = resultSet.getString("content");
+
+    return new Post(postId, userId, categoryId, title, content);
   }
 }

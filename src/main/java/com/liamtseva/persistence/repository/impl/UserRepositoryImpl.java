@@ -1,5 +1,8 @@
-package com.liamtseva;
+package com.liamtseva.persistence.repository.impl;
 
+import com.liamtseva.domain.exception.EntityNotFoundException;
+import com.liamtseva.persistence.entity.User;
+import com.liamtseva.persistence.repository.contract.UserRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,20 +21,21 @@ public class UserRepositoryImpl implements UserRepository {
 
   @Override
   public void addUser(User user) {
-    String query = "INSERT INTO Users (username, password, profile_image) VALUES (?, ?, ?)";
+    String query = "INSERT INTO User (username, password, profile_image) VALUES (?, ?, ?)";
     try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setString(1, user.username());
-      preparedStatement.setString(2, user.password());
-      preparedStatement.setBytes(3, user.profileImage());
-      preparedStatement.executeUpdate();
+        PreparedStatement statement = connection.prepareStatement(query)) {
+      statement.setString(1, user.username());
+      statement.setString(2, user.password());
+      statement.setBytes(3, user.profileImage());
+      statement.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
     }
   }
+
   @Override
   public User getUserById(int id) throws EntityNotFoundException {
-    String query = "SELECT * FROM Users WHERE id_user = ?";
+    String query = "SELECT * FROM User WHERE user_id = ?";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
       preparedStatement.setInt(1, id);
@@ -50,7 +54,7 @@ public class UserRepositoryImpl implements UserRepository {
   @Override
   public List<User> getAllUsers() {
     List<User> users = new ArrayList<>();
-    String query = "SELECT * FROM Users";
+    String query = "SELECT * FROM User";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -62,18 +66,16 @@ public class UserRepositoryImpl implements UserRepository {
     }
     return users;
   }
+
   @Override
   public User findByUsername(String username) throws EntityNotFoundException {
-    String query = "SELECT * FROM Users WHERE username = ?";
-    User user = null;
-
+    String query = "SELECT * FROM User WHERE username = ?";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-      preparedStatement.setString(1, username); // Встановлюємо значення параметра username
+      preparedStatement.setString(1, username);
       try (ResultSet resultSet = preparedStatement.executeQuery()) {
         if (resultSet.next()) {
-          user = mapUser(resultSet); // Якщо є результати, встановлюємо значення user
+          return mapUser(resultSet);
         } else {
           throw new EntityNotFoundException("User with username " + username + " not found");
         }
@@ -81,15 +83,11 @@ public class UserRepositoryImpl implements UserRepository {
     } catch (SQLException e) {
       throw new EntityNotFoundException("Error while fetching user by username: " + username, e);
     }
-
-    return user;
   }
-
-
 
   @Override
   public boolean isUsernameExists(String username) {
-    String query = "SELECT COUNT(*) FROM Users WHERE username = ?";
+    String query = "SELECT COUNT(*) FROM User WHERE username = ?";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
       preparedStatement.setString(1, username);
@@ -107,13 +105,13 @@ public class UserRepositoryImpl implements UserRepository {
 
   @Override
   public void updateUser(User user) throws EntityNotFoundException {
-    String query = "UPDATE Users SET username = ?, password = ?, profile_image = ? WHERE id = ?";
+    String query = "UPDATE User SET username = ?, password = ?, profile_image = ? WHERE user_id = ?";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
       preparedStatement.setString(1, user.username());
       preparedStatement.setString(2, user.password());
       preparedStatement.setBytes(3, user.profileImage());
-      preparedStatement.setInt(4, user.id());
+      preparedStatement.setInt(5, user.id());
       int rowsUpdated = preparedStatement.executeUpdate();
       if (rowsUpdated == 0) {
         throw new EntityNotFoundException("User with id " + user.id() + " not found");
@@ -125,7 +123,7 @@ public class UserRepositoryImpl implements UserRepository {
 
   @Override
   public void deleteUser(int id) throws EntityNotFoundException {
-    String query = "DELETE FROM Users WHERE id = ?";
+    String query = "DELETE FROM User WHERE user_id = ?";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
       preparedStatement.setInt(1, id);
@@ -140,7 +138,7 @@ public class UserRepositoryImpl implements UserRepository {
 
   private User mapUser(ResultSet resultSet) throws SQLException {
     return new User(
-        resultSet.getInt("id_user"),
+        resultSet.getInt("user_id"),
         resultSet.getString("username"),
         resultSet.getString("password"),
         resultSet.getBytes("profile_image")

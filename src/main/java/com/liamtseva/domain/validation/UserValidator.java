@@ -1,4 +1,4 @@
-package com.liamtseva;
+package com.liamtseva.domain.validation;
 
 import java.util.regex.Pattern;
 

@@ -1,5 +1,7 @@
-package com.liamtseva;
+package com.liamtseva.persistence.repository.contract;
 
+import com.liamtseva.domain.exception.EntityNotFoundException;
+import com.liamtseva.persistence.entity.Category;
 import java.util.List;
 
 public interface CategoryRepository {

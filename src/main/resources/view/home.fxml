@@ -1,61 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF ;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.liamtseva.HomeController">
+<AnchorPane prefHeight="558.0" prefWidth="714.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.liamtseva.presentation.controller.HomeController">
   <children>
-    <AnchorPane layoutY="-1.0" prefHeight="438.0" prefWidth="178.0" style="-fx-background-color: #F5F5DC;">
-         <children>
-            <Button fx:id="btn_home" layoutY="83.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC; " text="Домашня сторінка">
-               <graphic>
-                  <ImageView fitHeight="27.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../Desktop/personal-blog/src/main/resources/home.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btn_search" layoutY="141.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC;" text="Пошук" />
-            <Button fx:id="btn_createPost" layoutY="199.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC;" text="       Створити допис" />
-            <Button fx:id="btn_profile" layoutY="257.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC;" text="Мій профіль" />
-            <Button fx:id="btn_exit" layoutY="315.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC;" text="Вихід" />
-            <StackPane fx:id="stackPane" layoutY="83.0" prefHeight="58.0" prefWidth="10.0" style="-fx-background-color: #808080;" />
-            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="29.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../Desktop/personal-blog/src/main/resources/search.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="27.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../Desktop/personal-blog/src/main/resources/create.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="26.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../Desktop/personal-blog/src/main/resources/profile.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="28.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../Desktop/personal-blog/src/main/resources/exit.png" />
-               </image>
-            </ImageView>
-         </children>
-    </AnchorPane>
-      <AnchorPane prefHeight="67.0" prefWidth="704.0" style="-fx-background-color: #808080;">
-         <children>
-          <Label layoutX="270.0" layoutY="6.0" prefHeight="54.0" prefWidth="172.0" text="MyBlogify" textFill="WHITE">
-            <font>
-              <Font size="36.0" />
-            </font>
-          </Label>
-         </children>
-      </AnchorPane>
+    <Label layoutX="26.0" layoutY="20.0" prefHeight="18.0" prefWidth="139.0" text="Домашня" />
+      <TableView layoutX="68.0" layoutY="135.0" prefHeight="200.0" prefWidth="536.0" AnchorPane.bottomAnchor="223.0" AnchorPane.leftAnchor="67.60000000000002" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="134.8">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
   </children>
 </AnchorPane>

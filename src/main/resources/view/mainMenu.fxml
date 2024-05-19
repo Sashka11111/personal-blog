@@ -11,40 +11,43 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.liamtseva.presentation.controller.MainMenuController">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="606.0" prefWidth="184.0" styleClass="side-panel" stylesheets="@../design/mainMenu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutY="-1.0" prefHeight="606.0" prefWidth="184.0" style="-fx-background-color: #F5F5DC" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="btn_myGoals" layoutY="244.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" styleClass="side-btn" stylesheets="@../design/mainMenu.css" text="Мої цілі" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button fx:id="btn_completeGoal" layoutY="303.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" styleClass="side-btn" stylesheets="@../design/mainMenu.css" text="Завершити ціль" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.8000000000000114" />
-            <Line endX="89.10000610351562" endY="-1.52587890625E-5" layoutX="82.0" layoutY="210.0" startX="-67.90709686279297" startY="-1.52587890625E-5" stroke="WHITE" />
-            <StackPane fx:id="stackPane" layoutX="-2.0" layoutY="244.0" prefHeight="58.0" prefWidth="13.0" style="-fx-background-color: #483D8B;" />
-            <Button fx:id="btn_exit" layoutY="537.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" styleClass="side-btn" stylesheets="@../design/mainMenu.css" text="Вихід" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Label layoutX="55.0" layoutY="165.0" prefHeight="27.0" prefWidth="66.0" text="Вітаємо" textFill="WHITE">
+            <Button fx:id="btn_home" layoutY="244.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC" stylesheets="@../design/design.css" text="Головне меню" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="btn_search" layoutY="303.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC" stylesheets="@../design/design.css" text="Пошук користувачів" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="btn_addPost" layoutY="362.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC" stylesheets="@../design/design.css" text="Створити допис" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="btn_myProfile" layoutY="421.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC" stylesheets="@../design/design.css" text="Мій профіль" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="btn_exit" layoutX="-1.0" layoutY="479.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: #F5F5DC;" stylesheets="@../design/design.css" text="Вихід" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
+            <Line endX="89.10000610351562" endY="-1.52587890625E-5" layoutX="82.0" layoutY="210.0" startX="-67.90709686279297" startY="-1.52587890625E-5" stroke="GREY" />
+            <StackPane fx:id="stackPane" layoutX="-2.0" layoutY="244.0" prefHeight="58.0" prefWidth="13.0" style="-fx-background-color: #808080" />
+            <Label alignment="CENTER" layoutX="32.0" layoutY="149.0" prefHeight="27.0" prefWidth="126.0" text="Вітаємо">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="92.0" fitWidth="99.0" layoutX="42.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="userImageView" fitHeight="92.0" fitWidth="99.0" layoutX="47.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../data/mainMenu.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btn_category" layoutY="362.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" styleClass="side-btn" stylesheets="@../design/mainMenu.css" text="Категорії" />
-            <Button fx:id="btn_steps" layoutY="421.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" styleClass="side-btn" stylesheets="@../design/mainMenu.css" text="Кроки до цілі" />
-            <Button fx:id="btn_tips" layoutX="-4.0" layoutY="479.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="185.0" styleClass="side-btn" stylesheets="@../design/mainMenu.css" text="Поради" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="178.0" prefHeight="47.0" prefWidth="722.0" style="-fx-background-color: #483D8B;" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="248.0" layoutY="8.0" prefHeight="30.0" prefWidth="225.0" text="Трекер особистих цілей" textFill="WHITE">
+                  <Image url="@../data/profile.png" />
+               </image></ImageView>
+            <Label fx:id="userName" alignment="CENTER" layoutX="32.0" layoutY="177.0" prefHeight="27.0" prefWidth="126.0">
                <font>
-                  <Font size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="186.0" layoutY="47.0" prefHeight="558.0" prefWidth="714.0">
+      <AnchorPane layoutX="184.0" layoutY="43.0" prefHeight="558.0" prefWidth="714.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="184.0" AnchorPane.rightAnchor="1.6000000000000227" AnchorPane.topAnchor="43.0">
          <children>
-            <StackPane fx:id="contentArea" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <StackPane fx:id="contentArea" prefHeight="558.0" prefWidth="714.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="43.0" prefWidth="900.0" style="-fx-background-color: #808080;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="412.0" layoutY="8.0" prefHeight="27.0" prefWidth="116.0" text="MyBlogify" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

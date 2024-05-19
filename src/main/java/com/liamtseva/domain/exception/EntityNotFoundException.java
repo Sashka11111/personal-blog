@@ -1,4 +1,4 @@
-package com.liamtseva;
+package com.liamtseva.domain.exception;
 
 public class EntityNotFoundException extends Exception {
 

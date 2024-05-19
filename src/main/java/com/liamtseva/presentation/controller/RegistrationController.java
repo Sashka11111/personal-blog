@@ -1,5 +1,11 @@
-package com.liamtseva;
+package com.liamtseva.presentation.controller;
 
+import com.liamtseva.domain.validation.UserValidator;
+import com.liamtseva.persistence.connection.DatabaseConnection;
+import com.liamtseva.persistence.entity.User;
+import com.liamtseva.persistence.repository.contract.UserRepository;
+import com.liamtseva.persistence.repository.impl.UserRepositoryImpl;
+import com.liamtseva.presentation.animation.Shake;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -59,6 +65,7 @@ public class RegistrationController {
   void chooseImageButtonClicked() {
     chooseImage();
   }
+
   public void chooseImage() {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Choose Profile Image");
@@ -70,13 +77,12 @@ public class RegistrationController {
       selectedProfileImagePath = selectedFile.getPath();
       Image image = new Image(selectedFile.toURI().toString());
       profileImageView.setImage(image);
-      imageBytes = readImageToBytes(selectedFile); // Зчитати зображення в масив байтів
+      imageBytes = readImageToBytes(selectedFile);
     } else {
       profileImageView.setImage(new Image(getClass().getResourceAsStream("/data/profile.png")));
-      imageBytes = null; // Зображення не вибрано
+      imageBytes = null;
     }
   }
-
 
   @FXML
   void initialize() {
@@ -90,12 +96,12 @@ public class RegistrationController {
         throw new RuntimeException(e);
       }
     });
-
+    byte[] profileImageBytes = imageBytes;
     SignInButton.setOnAction(event -> {
       String username = login_field.getText();
       String password = password_field.getText();
       if (username.isEmpty() || password.isEmpty()) {
-        errorMessageLabel.setText("Логін та пароль не повинен бути пустим");
+        errorMessageLabel.setText("Логін та пароль не повинні бути порожніми");
         Shake userLoginAnim = new Shake(login_field);
         Shake userPassAnim = new Shake(password_field);
         userLoginAnim.playAnim();
@@ -104,9 +110,7 @@ public class RegistrationController {
       }
       if (UserValidator.isUsernameValid(username) && UserValidator.isPasswordValid(password)) {
         if (!userRepository.isUsernameExists(username)) {
-          // Створення нового користувача
-          User user = new User(0, username, password, imageBytes); // Додавання зображення
-          // Додавання користувача до бази даних через UserRepository
+          User user = new User(0, username, password, imageBytes);
           userRepository.addUser(user);
 
           System.out.println("Registration successful.");
@@ -125,13 +129,12 @@ public class RegistrationController {
           userLoginAnim.playAnim();
         }
       } else {
-        errorMessageLabel.setText("Пароль має мати велику, маленьку букву та цифру");
+        errorMessageLabel.setText("Пароль має містити велику, маленьку букву та цифру");
         Shake userLoginAnim = new Shake(login_field);
         Shake userPassAnim = new Shake(password_field);
         userLoginAnim.playAnim();
         userPassAnim.playAnim();
       }
     });
-
   }
 }

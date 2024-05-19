@@ -1,5 +1,8 @@
-package com.liamtseva;
+package com.liamtseva.persistence.repository.impl;
 
+import com.liamtseva.persistence.repository.contract.CategoryRepository;
+import com.liamtseva.domain.exception.EntityNotFoundException;
+import com.liamtseva.persistence.entity.Category;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +40,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
   @Override
   public void updateCategory(Category category) throws EntityNotFoundException {
     try (Connection connection = dataSource.getConnection()) {
-      PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Category SET name = ? WHERE id_category = ?");
+      PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Category SET name = ? WHERE category_id = ?");
       preparedStatement.setString(1, category.name());
       preparedStatement.setInt(2, category.id());
       int affectedRows = preparedStatement.executeUpdate();
@@ -52,7 +55,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
   @Override
   public void deleteCategory(int categoryId) throws EntityNotFoundException {
     try (Connection connection = dataSource.getConnection()) {
-      PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Category WHERE id_category = ?");
+      PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Category WHERE category_id = ?");
       preparedStatement.setInt(1, categoryId);
       int affectedRows = preparedStatement.executeUpdate();
       if (affectedRows == 0) {
@@ -70,7 +73,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
       Statement statement = connection.createStatement();
       ResultSet resultSet = statement.executeQuery("SELECT * FROM Category");
       while (resultSet.next()) {
-        Category category = new Category(resultSet.getInt("id_category"), resultSet.getString("name"));
+        Category category = new Category(resultSet.getInt("category_id"), resultSet.getString("name"));
         categories.add(category);
       }
     } catch (SQLException e) {
@@ -82,11 +85,11 @@ public class CategoryRepositoryImpl implements CategoryRepository {
   @Override
   public Category getCategoryById(int categoryId) throws EntityNotFoundException {
     try (Connection connection = dataSource.getConnection()) {
-      PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Category WHERE id_category = ?");
+      PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Category WHERE category_id = ?");
       preparedStatement.setInt(1, categoryId);
       ResultSet resultSet = preparedStatement.executeQuery();
       if (resultSet.next()) {
-        return new Category(resultSet.getInt("id_category"), resultSet.getString("name"));
+        return new Category(resultSet.getInt("category_id"), resultSet.getString("name"));
       } else {
         throw new EntityNotFoundException("Category not found.");
       }

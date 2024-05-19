@@ -1,4 +1,4 @@
-package com.liamtseva;
+package com.liamtseva.presentation.animation;
 
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;

@@ -1,14 +1,14 @@
 package com.liamtseva.persistence.repository.contract;
 
 import com.liamtseva.domain.exception.EntityNotFoundException;
-import com.liamtseva.persistence.entity.Step;
+import com.liamtseva.persistence.entity.Comment;
 import java.util.List;
 
-public interface StepRepository {
-  void addStep(Step step)throws EntityNotFoundException;
-  Step getStepById(int id) throws EntityNotFoundException;
-  List<Step> getStepsByGoalId(int goalId);
-  List<Step> getAllSteps();
-  void updateStep(Step step) throws EntityNotFoundException;
-  void deleteStep(int id) throws EntityNotFoundException;
+public interface CommentRepository {
+  void addComment(Comment comment)throws EntityNotFoundException;
+  Comment getCommentById(int id) throws EntityNotFoundException;
+  List<Comment> getCommentsByPostId(int postId);
+  List<Comment> getAllComments();
+  void updateComment(Comment comment) throws EntityNotFoundException;
+  void deleteComment(int id) throws EntityNotFoundException;
 }

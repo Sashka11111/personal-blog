@@ -1,14 +1,17 @@
 package com.liamtseva.persistence.entity;
 
+import java.time.LocalDate;
+
 public record Comment(
     int id,
-    int goalId,
-    String goalName,
-    String description)
-    implements Entity, Comparable<Step> {
+    int postId,
+    int userId,
+    String content,
+    LocalDate createdDate)
+    implements Entity, Comparable<Comment> {
 
   @Override
-  public int compareTo(Step o) {
+  public int compareTo(Comment o) {
     // Порівняння за id
     return Integer.compare(this.id, o.id());
   }

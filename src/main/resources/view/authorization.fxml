@@ -9,38 +9,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.liamtseva.AuthorizationController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.liamtseva.presentation.controller.AuthorizationController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #808080;">
          <children>
-            <Label layoutX="69.0" layoutY="48.0" textFill="WHITE" text="MyBlogify">
+            <Label layoutX="69.0" layoutY="48.0" text="MyBlogify">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="loginSingUpButton" layoutX="81.0" layoutY="310.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: #808080; -fx-border-color: #FFFFFF;" styleClass="creat-btn" stylesheets="@design/design.css" text="Реєструватися" textFill="WHITE">
+            <Button fx:id="loginSingUpButton" layoutX="81.0" layoutY="310.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: #808080; -fx-border-color: #FFFFFF;" styleClass="creat-btn" stylesheets="@../design/design.css" text="Реєструватися" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <ImageView fitHeight="165.0" fitWidth="159.0" layoutX="69.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="94.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Desktop/personal-blog/src/main/resources/User.png" />
-               </image>
-            </ImageView>
+                  <Image url="@../data/user.png" />
+               </image></ImageView>
+            <Label layoutX="39.0" layoutY="263.0" text="Ще не зареєстровані?">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #F5F5DC;">
          <children>
             <PasswordField fx:id="password_field" layoutX="40.0" layoutY="203.0" prefHeight="34.0" prefWidth="217.0" promptText="Пароль" style="-fx-background-color: #F5F5DC #F5F5DC; -fx-border-color: #808080; -fx-border-radius: 5;" />
             <TextField fx:id="login_field" layoutX="39.0" layoutY="145.0" prefHeight="34.0" prefWidth="218.0" promptText="Логін" style="-fx-background-color: #F5F5DC; -fx-border-color: #808080; -fx-border-radius: 5;" />
-            <Button fx:id="authSignInButton" layoutX="103.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #808080;" stylesheets="@design/design.css" text="Вхід" textFill="WHITE" />
+            <Button fx:id="authSignInButton" layoutX="103.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #808080;" stylesheets="@../design/design.css" text="Вхід" textFill="WHITE" />
             <Label layoutX="43.0" layoutY="62.0" prefHeight="54.0" prefWidth="218.0" text="Авторизація">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="errorMessageLabel" layoutX="2.0" layoutY="116.0" prefHeight="18.0" prefWidth="294.0" textFill="#f20e0e" alignment="CENTER" />
+            <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="2.0" layoutY="116.0" prefHeight="18.0" prefWidth="294.0" textFill="#f20e0e" />
          </children>
       </AnchorPane>
    </children>

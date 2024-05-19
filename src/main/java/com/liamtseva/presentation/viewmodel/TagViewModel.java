@@ -1,72 +1,49 @@
 package com.liamtseva.presentation.viewmodel;
 
-import com.liamtseva.persistence.entity.Step;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 
-public class StepViewModel {
-  private final SimpleIntegerProperty idStep;
-  private final SimpleIntegerProperty idGoal;
-  private final SimpleStringProperty description;
-  private final SimpleStringProperty goalName;
+public class TagViewModel {
+  private final IntegerProperty id;
+  private final StringProperty name;
 
-  public StepViewModel(Step step) {
-    this.idStep = new SimpleIntegerProperty(step.id());
-    this.idGoal = new SimpleIntegerProperty(step.goalId());
-    this.description = new SimpleStringProperty(step.description());
-    this.goalName = new SimpleStringProperty(step.goalName());
+  public TagViewModel(int id, String name) {
+    this.id = new SimpleIntegerProperty(id);
+    this.name = new SimpleStringProperty(name);
   }
 
-  public int getIdStep() {
-    return idStep.get();
+  public TagViewModel() {
+    this(0, "");
   }
 
-  public SimpleIntegerProperty idStepProperty() {
-    return idStep;
+  public int getId() {
+    return id.get();
   }
 
-  public void setIdStep(int idStep) {
-    this.idStep.set(idStep);
+  public IntegerProperty idProperty() {
+    return id;
   }
 
-  public int getIdGoal() {
-    return idGoal.get();
+  public void setId(int id) {
+    this.id.set(id);
   }
 
-  public SimpleIntegerProperty idGoalProperty() {
-    return idGoal;
+  public String getName() {
+    return name.get();
   }
 
-  public void setIdGoal(int idGoal) {
-    this.idGoal.set(idGoal);
+  public StringProperty nameProperty() {
+    return name;
   }
 
-  public String getDescription() {
-    return description.get();
+  public void setName(String name) {
+    this.name.set(name);
   }
 
-  public SimpleStringProperty descriptionProperty() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description.set(description);
-  }
-
-  public String getGoalName() {
-    return goalName.get();
-  }
-
-  public SimpleStringProperty goalNameProperty() {
-    return goalName;
-  }
-
-  public void setGoalName(String goalName) {
-    this.goalName.set(goalName);
-  }
-
-  // Метод для отримання об'єкта Step з вмісту ViewModel
-  public Step getStep() {
-    return new Step(getIdStep(), getIdGoal(), getGoalName(), getDescription());
+  @Override
+  public String toString() {
+    return "TagViewModel{" +
+        "id=" + id.get() +
+        ", name='" + name.get() + '\'' +
+        '}';
   }
 }

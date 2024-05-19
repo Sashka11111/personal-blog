@@ -1,2 +1,5 @@
-package com.liamtseva.presentation.controller;public class SearchController {
+package com.liamtseva.presentation.controller;
+
+public class SearchController {
+
 }

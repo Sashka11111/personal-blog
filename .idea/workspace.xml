@@ -5,35 +5,119 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6ef62e2-8ced-4833-a1d2-50d806f2c754" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/dml.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/domain/exception/EntityNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/domain/exception/EntityNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/domain/validation/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/domain/validation/UserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/AuthenticatedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/AuthenticatedUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/connection/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/connection/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/PostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/TagsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/TagsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/CategoryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/CategoryRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/CommentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/CommentRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/PostRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/PostRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/TagsRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/TagsRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/animation/Shake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/animation/Shake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AddPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AddPostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MyProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MyProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/viewmodel/CategoryViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/viewmodel/CategoryViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/viewmodel/PostViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/viewmodel/PostViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/viewmodel/TagViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/viewmodel/TagViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/addPost.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/addPost.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authorization.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/mainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/myProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/myProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/registration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/registration.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/search.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2gdyCS0faKFLQSPIyvb2h5l1QVX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/1/Desktop/personal-blog/src/main/resources/data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\1\Desktop\personal-blog\src\main\resources\data" />
+      <recent name="C:\Users\1\Desktop\personal-blog\src\main\resources\view" />
+      <recent name="C:\Users\1\Desktop\personal-blog\src\main\resources" />
+      <recent name="C:\Users\1\Desktop\personal-blog\src\main\java\com\liamtseva" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\1\Desktop\personal-blog\Data" />
+      <recent name="C:\Users\1\Desktop\personal-blog\db" />
+      <recent name="C:\Users\1\Desktop\personal-blog\src\main\resources\data" />
+      <recent name="C:\Users\1\Desktop\personal-blog\src\main\resources\view" />
+      <recent name="C:\Users\1\Desktop\personal-blog\src\main\resources\design" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.liamtseva.presentation.controller" />
+      <recent name="com.liamtseva.persistence" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -42,8 +126,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716041624526</updated>
-      <workItem from="1716041625615" duration="2000" />
+      <workItem from="1716041625615" duration="7050000" />
+      <workItem from="1716049421120" duration="2709000" />
+      <workItem from="1716055520619" duration="2258000" />
+      <workItem from="1716095879644" duration="4383000" />
+      <workItem from="1716127436861" duration="6000" />
+      <workItem from="1716127522521" duration="8553000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

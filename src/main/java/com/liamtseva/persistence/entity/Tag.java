@@ -1,12 +1,12 @@
 package com.liamtseva.persistence.entity;
 
-public record Tips(
+public record Tag(
     int id,
-    String tipsText)
-    implements Entity, Comparable<Tips> {
+    String name)
+    implements Entity, Comparable<Tag> {
 
   @Override
-  public int compareTo(Tips o) {
+  public int compareTo(Tag o) {
     // Порівняння за id
     return Integer.compare(this.id, o.id());
   }

@@ -1,5 +1,6 @@
-package com.liamtseva;
+package com.liamtseva.presentation.viewmodel;
 
+import com.liamtseva.persistence.entity.Category;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 

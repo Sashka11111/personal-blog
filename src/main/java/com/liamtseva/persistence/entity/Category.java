@@ -1,4 +1,4 @@
-package com.liamtseva;
+package com.liamtseva.persistence.entity;
 
 public record Category(
     int id,
