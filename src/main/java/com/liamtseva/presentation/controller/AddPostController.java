@@ -76,17 +76,24 @@ public class AddPostController {
     String title = titleField.getText();
     String content = contentField.getText();
     if (!title.isEmpty() && !content.isEmpty() && selectedCategory != null) {
-      User currentUser = AuthenticatedUser.getInstance().getCurrentUser();
-      if (currentUser != null) {
-        Post post = new Post(0, currentUser.id(), selectedCategory.id(), title, content, imageBytes); // Додано передачу imageBytes
-        postRepository.addPost(post);
-        messageLabel.setText("Допис успішно додано.");
-        clearFields();
+      if (imageBytes != null) { // Перевірка, чи було вибране зображення
+        User currentUser = AuthenticatedUser.getInstance().getCurrentUser();
+        if (currentUser != null) {
+          Post post = new Post(0, currentUser.id(), selectedCategory.id(), title, content, imageBytes); // Додано передачу imageBytes
+          postRepository.addPost(post);
+          messageLabel.setText("Допис успішно додано.");
+          clearFields();
+          // Встановлення дефолтного зображення
+          postImageView.setImage(new Image(getClass().getResourceAsStream("/data/image.png")));
+        }
+      } else {
+        messageLabel.setText("Будь ласка, виберіть зображення.");
       }
     } else {
       messageLabel.setText("Назва, вміст і категорія не можуть бути пустими.");
     }
   }
+
 
   private void chooseImage() {
     FileChooser fileChooser = new FileChooser();

@@ -1,14 +1,18 @@
 package com.liamtseva.persistence.repository.impl;
 
 import com.liamtseva.domain.exception.EntityNotFoundException;
+import com.liamtseva.persistence.entity.Post;
 import com.liamtseva.persistence.entity.User;
 import com.liamtseva.persistence.repository.contract.UserRepository;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
 import javax.sql.DataSource;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -150,7 +154,37 @@ public class UserRepositoryImpl implements UserRepository {
       throw new EntityNotFoundException("Error while deleting user with id " + id, e);
     }
   }
+  @Override
+  public List<Post> getUserPosts(int userId) {
+    List<Post> userPosts = new ArrayList<>();
+    String query = "SELECT * FROM Post WHERE user_id = ?";
 
+    try (Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(query)) {
+
+      statement.setInt(1, userId);
+
+      try (ResultSet resultSet = statement.executeQuery()) {
+        while (resultSet.next()) {
+          // Отримання даних про допис і додавання їх до списку userPosts
+          int postId = resultSet.getInt("post_id");
+          int categoryId = resultSet.getInt("category_id");
+          String title = resultSet.getString("title");
+          String content = resultSet.getString("content");
+          byte[] postImage = resultSet.getBytes("post_image");
+
+          Post post = new Post(postId, userId, categoryId, title, content, postImage);
+
+          userPosts.add(post);
+        }
+      }
+    } catch (SQLException e) {
+      // Обробка винятку, якщо потрібно
+      e.printStackTrace();
+    }
+
+    return userPosts;
+  }
   private User mapUser(ResultSet resultSet) throws SQLException {
     return new User(
         resultSet.getInt("user_id"),

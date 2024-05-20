@@ -31,12 +31,12 @@
                </font>
             </Label>
             <TextArea fx:id="contentField" layoutX="36.0" layoutY="225.0" prefHeight="182.0" prefWidth="378.0" />
-            <Button fx:id="addPostButton" layoutX="39.0" layoutY="427.0" prefHeight="34.0" prefWidth="140.0" style="-fx-border-color: #808080; -fx-background-color: #F5F5DC; -fx-border-radius: 5;" text="Додати допис">
+            <Button fx:id="addPostButton" layoutX="39.0" layoutY="427.0" prefHeight="34.0" prefWidth="140.0" style="-fx-border-color: #808080; -fx-background-color: #F5F5DC; -fx-border-radius: 5;" stylesheets="@../design/design.css" text="Додати допис">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label fx:id="messageLabel" layoutX="184.0" layoutY="22.0" prefHeight="18.0" prefWidth="282.0" text="" />
+            <Label fx:id="messageLabel" layoutX="184.0" layoutY="22.0" prefHeight="18.0" prefWidth="330.0" text="" />
             <ComboBox fx:id="category" layoutX="36.0" layoutY="149.0" prefHeight="27.0" prefWidth="158.0" promptText="Виберіть..." style="-fx-background-color: #F5F5DC; -fx-border-color: #808080; -fx-border-radius: 5;" />
             <Label layoutX="36.0" layoutY="115.0" prefHeight="27.0" prefWidth="106.0" text=" Категорія:">
                <font>
@@ -48,7 +48,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="chooseImageButton" layoutX="449.0" layoutY="219.0" prefHeight="38.0" prefWidth="181.0" style="-fx-border-color: #808080; -fx-background-color: #F5F5DC; -fx-border-radius: 5;" text="Вибрати зображення">
+            <Button fx:id="chooseImageButton" layoutX="449.0" layoutY="219.0" prefHeight="38.0" prefWidth="181.0" style="-fx-border-color: #808080; -fx-background-color: #F5F5DC; -fx-border-radius: 5;" stylesheets="@../design/design.css" text="Вибрати зображення">
                <font>
                   <Font size="16.0" />
                </font>

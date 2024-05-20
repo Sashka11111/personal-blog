@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6ef62e2-8ced-4833-a1d2-50d806f2c754" name="Changes" comment="Implemented functionality for adding posts and improved the main menu">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/image.png" afterDir="false" />
+    <list default="true" id="d6ef62e2-8ced-4833-a1d2-50d806f2c754" name="Changes" comment="Added the ability to search for users and add images to posts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/PostRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/PostRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/UserRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AddPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AddPostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MyProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MyProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/RegistrationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/search.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/addPost.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/addPost.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authorization.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/registration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/registration.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/search.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +98,8 @@
       <workItem from="1716127436861" duration="6000" />
       <workItem from="1716127522521" duration="8827000" />
       <workItem from="1716141027919" duration="1746000" />
-      <workItem from="1716185186230" duration="9192000" />
+      <workItem from="1716185186230" duration="10501000" />
+      <workItem from="1716214821300" duration="4831000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented functionality for adding posts and improved the main menu">
       <option name="closed" value="true" />
@@ -117,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716139160266</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added the ability to search for users and add images to posts">
+      <option name="closed" value="true" />
+      <created>1716205554391</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716205554391</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +125,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented functionality for adding posts and improved the main menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented functionality for adding posts and improved the main menu" />
+    <MESSAGE value="Added the ability to search for users and add images to posts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to search for users and add images to posts" />
   </component>
 </project>

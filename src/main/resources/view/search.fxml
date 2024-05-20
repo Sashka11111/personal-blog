@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="558.0" prefWidth="714.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.liamtseva.presentation.controller.SearchController">
   <children>
-    <Label layoutX="35.0" layoutY="22.0" prefHeight="18.0" prefWidth="139.0" text="Пошук">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
-    <TextField fx:id="searchField" layoutX="26.0" layoutY="50.0" prefHeight="26.0" prefWidth="258.0" promptText="Введіть ім'я користувача" style="-fx-background-color: WHITE; -fx-border-color: #808080; -fx-border-radius: 5;" />
-    <ScrollPane layoutX="26.0" layoutY="90.0" prefHeight="430.0" prefWidth="662.0">
+    <ScrollPane layoutX="26.0" layoutY="90.0" prefHeight="430.0" prefWidth="662.0" style="-fx-background-color: WHITE; -fx-border-color: WHITE;">
       <content>
-        <VBox fx:id="usersContainer" prefHeight="428.0" prefWidth="646.0" spacing="10.0" style="-fx-background-color: WHITE; -fx-border-color: WHITE;" />
+        <VBox fx:id="usersContainer" prefHeight="428.0" prefWidth="644.0" spacing="10.0" style="-fx-background-color: WHITE; -fx-border-color: WHITE;" />
       </content>
     </ScrollPane>
+      <AnchorPane layoutX="26.0" layoutY="44.0" prefHeight="38.0" prefWidth="642.0" style="-fx-border-color: #808080; -fx-border-radius: 5;">
+         <children>
+          <TextField fx:id="searchField" layoutX="39.0" layoutY="5.0" prefHeight="31.0" prefWidth="601.0" promptText="Введіть ім'я користувача" style="-fx-background-color: WHITE;">
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../data/search.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
   </children>
 </AnchorPane>

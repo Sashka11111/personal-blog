@@ -1,6 +1,7 @@
 package com.liamtseva.persistence.repository.contract;
 
 import com.liamtseva.domain.exception.EntityNotFoundException;
+import com.liamtseva.persistence.entity.Post;
 import com.liamtseva.persistence.entity.User;
 import java.util.List;
 import javafx.scene.image.Image;
@@ -15,4 +16,5 @@ public interface UserRepository {
   List<User> getAllUsers();
   void updateUser(User user) throws EntityNotFoundException;
   void deleteUser(int id) throws EntityNotFoundException;
+  List<Post> getUserPosts(int userId);
 }
