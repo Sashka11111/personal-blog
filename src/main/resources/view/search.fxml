@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="558.0" prefWidth="714.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.liamtseva.presentation.controller.SearchController">
   <children>
-    <Label layoutX="26.0" layoutY="20.0" prefHeight="18.0" prefWidth="139.0" text="Пошук" />
+    <Label layoutX="35.0" layoutY="22.0" prefHeight="18.0" prefWidth="139.0" text="Пошук">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+    <TextField fx:id="searchField" layoutX="26.0" layoutY="50.0" prefHeight="26.0" prefWidth="258.0" promptText="Введіть ім'я користувача" style="-fx-background-color: WHITE; -fx-border-color: #808080; -fx-border-radius: 5;" />
+    <ScrollPane layoutX="26.0" layoutY="90.0" prefHeight="430.0" prefWidth="662.0">
+      <content>
+        <VBox fx:id="usersContainer" prefHeight="428.0" prefWidth="646.0" spacing="10.0" style="-fx-background-color: WHITE; -fx-border-color: WHITE;" />
+      </content>
+    </ScrollPane>
   </children>
 </AnchorPane>

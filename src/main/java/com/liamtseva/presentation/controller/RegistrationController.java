@@ -9,6 +9,7 @@ import com.liamtseva.presentation.animation.Shake;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,6 +40,9 @@ public class RegistrationController {
   private Label errorMessageLabel;
 
   @FXML
+  private Label errorPassword;
+
+  @FXML
   private ImageView profileImageView;
 
   private String selectedProfileImagePath;
@@ -48,6 +52,8 @@ public class RegistrationController {
 
   public RegistrationController() {
     this.userRepository = new UserRepositoryImpl(new DatabaseConnection().getDataSource());
+    // Завантажити зображення за замовчуванням
+    imageBytes = loadDefaultImageBytes();
   }
 
   private byte[] readImageToBytes(File file) {
@@ -55,6 +61,18 @@ public class RegistrationController {
       byte[] data = new byte[(int) file.length()];
       fis.read(data);
       return data;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  private byte[] loadDefaultImageBytes() {
+    try (InputStream is = getClass().getResourceAsStream("/data/profile.png")) {
+      if (is == null) {
+        throw new IOException("Default profile image not found");
+      }
+      return is.readAllBytes();
     } catch (IOException e) {
       e.printStackTrace();
       return null;
@@ -80,7 +98,7 @@ public class RegistrationController {
       imageBytes = readImageToBytes(selectedFile);
     } else {
       profileImageView.setImage(new Image(getClass().getResourceAsStream("/data/profile.png")));
-      imageBytes = null;
+      imageBytes = loadDefaultImageBytes();
     }
   }
 
@@ -96,7 +114,7 @@ public class RegistrationController {
         throw new RuntimeException(e);
       }
     });
-    byte[] profileImageBytes = imageBytes;
+
     SignInButton.setOnAction(event -> {
       String username = login_field.getText();
       String password = password_field.getText();
@@ -113,8 +131,6 @@ public class RegistrationController {
           User user = new User(0, username, password, imageBytes);
           userRepository.addUser(user);
 
-          System.out.println("Registration successful.");
-
           Scene currentScene = authSignInButton.getScene();
           FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/authorization.fxml"));
           try {
@@ -129,7 +145,8 @@ public class RegistrationController {
           userLoginAnim.playAnim();
         }
       } else {
-        errorMessageLabel.setText("Пароль має містити велику, маленьку букву та цифру");
+        errorMessageLabel.setText("Пароль має містити велику, маленьку букву та цифру.");
+        errorPassword.setText("Мінімальна довжина паролю: 6 символів");
         Shake userLoginAnim = new Shake(login_field);
         Shake userPassAnim = new Shake(password_field);
         userLoginAnim.playAnim();

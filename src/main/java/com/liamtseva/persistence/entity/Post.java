@@ -7,7 +7,8 @@ public record Post(
     int userId,
     int categoryId,
     String title,
-    String context)
+    String context,
+    byte[] postImage)
     implements Entity, Comparable<Post> {
 
   @Override

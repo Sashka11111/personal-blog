@@ -13,22 +13,22 @@
   <children>
     <AnchorPane fx:id="sideForm" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #808080;">
       <children>
-        <Label layoutX="69.0" layoutY="48.0" text="MyBlogify">
+        <Label layoutX="69.0" layoutY="48.0" text="MyBlogify" textFill="WHITE">
           <font>
             <Font size="36.0" />
           </font>
         </Label>
-        <Button fx:id="authSignInButton" layoutX="81.0" layoutY="310.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: #808080; -fx-border-color: #FFFFFF; -fx-border-radius: 5;" text="Авторизуватися" textFill="WHITE">
+        <Button fx:id="authSignInButton" layoutX="81.0" layoutY="310.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: #808080; -fx-border-color: #FFFFFF; -fx-border-radius: 5;" stylesheets="@../design/design.css" text="Авторизуватися" textFill="WHITE">
           <font>
             <Font size="14.0" />
           </font>
         </Button>
-        <ImageView fx:id="profileImageView" fitHeight="100.0" fitWidth="100.0" layoutX="99.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="profileImageView" fitHeight="100.0" fitWidth="100.0" layoutX="99.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
           <image>
-            <Image url="@../data/user.png" />
+            <Image url="@../data/profile.png" />
           </image>
         </ImageView>
-        <Button layoutX="60.0" layoutY="240.0" mnemonicParsing="false" onAction="#chooseImageButtonClicked" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #808080; -fx-border-color: #FFFFFF; -fx-border-radius: 5;" text="Вибрати зображення" textFill="WHITE">
+        <Button layoutX="60.0" layoutY="240.0" mnemonicParsing="false" onAction="#chooseImageButtonClicked" prefHeight="34.0" prefWidth="178.0" style="-fx-background-color: #808080; -fx-border-color: #FFFFFF; -fx-border-radius: 5;" stylesheets="@../design/design.css" text="Вибрати зображення" textFill="WHITE">
           <font>
             <Font size="14.0" />
           </font>
@@ -39,13 +39,14 @@
       <children>
         <PasswordField fx:id="password_field" layoutX="40.0" layoutY="203.0" prefHeight="34.0" prefWidth="217.0" promptText="Пароль" style="-fx-background-color: #F5F5DC #F5F5DC; -fx-border-color: #808080; -fx-border-radius: 5;" />
         <TextField fx:id="login_field" layoutX="39.0" layoutY="145.0" prefHeight="34.0" prefWidth="218.0" promptText="Логін" style="-fx-background-color: #F5F5DC; -fx-border-color: #808080; -fx-border-radius: 5;" />
-        <Button fx:id="SignInButton" layoutX="103.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: #808080;" text="Зареєструватися" textFill="WHITE" />
-        <Label layoutX="63.0" layoutY="62.0" prefHeight="54.0" prefWidth="186.0" text="Реєстрація">
+        <Button fx:id="SignInButton" layoutX="103.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: #808080;" stylesheets="@../design/design.css" text="Зареєструватися" textFill="WHITE" />
+        <Label layoutX="57.0" layoutY="50.0" prefHeight="54.0" prefWidth="186.0" text="Реєстрація">
           <font>
             <Font size="36.0" />
           </font>
         </Label>
-        <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="2.0" layoutY="116.0" prefHeight="18.0" prefWidth="294.0" textFill="#f20e0e" />
+        <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="1.0" layoutY="104.0" prefHeight="18.0" prefWidth="294.0" textFill="#f20e0e" />
+            <Label fx:id="errorPassword" alignment="CENTER" layoutX="9.0" layoutY="122.0" prefHeight="18.0" prefWidth="294.0" textFill="#f20e0e" />
       </children>
     </AnchorPane>
   </children>

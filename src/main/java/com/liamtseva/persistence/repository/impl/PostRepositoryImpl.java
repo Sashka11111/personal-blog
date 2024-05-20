@@ -21,13 +21,14 @@ public class PostRepositoryImpl implements PostRepository {
 
   @Override
   public void addPost(Post post) {
-    String sql = "INSERT INTO Post (user_id, category_id, title, content) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO Post (user_id, category_id, title, content, post_image) VALUES (?, ?, ?, ?, ?)";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setInt(1, post.userId());
       statement.setInt(2, post.categoryId());
       statement.setString(3, post.title());
       statement.setString(4, post.context());
+      statement.setBytes(5, post.postImage());
       statement.executeUpdate();
     } catch (SQLException e) {
       throw new RuntimeException("Error adding post", e);
@@ -111,14 +112,15 @@ public class PostRepositoryImpl implements PostRepository {
 
   @Override
   public void updatePost(Post post) throws EntityNotFoundException {
-    String sql = "UPDATE Post SET user_id = ?, category_id = ?, title = ?, content = ? WHERE post_id = ?";
+    String sql = "UPDATE Post SET user_id = ?, category_id = ?, title = ?, content = ?, post_image = ? WHERE post_id = ?";
     try (Connection connection = dataSource.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setInt(1, post.userId());
       statement.setInt(2, post.categoryId());
       statement.setString(3, post.title());
       statement.setString(4, post.context());
-      statement.setInt(5, post.id());
+      statement.setBytes(5, post.postImage());
+      statement.setInt(6, post.id());
 
       int rowsAffected = statement.executeUpdate();
       if (rowsAffected == 0) {
@@ -151,7 +153,9 @@ public class PostRepositoryImpl implements PostRepository {
     int categoryId = resultSet.getInt("category_id");
     String title = resultSet.getString("title");
     String content = resultSet.getString("content");
+    byte[] postImage = resultSet.getBytes("post_image");
 
-    return new Post(postId, userId, categoryId, title, content);
+    return new Post(postId, userId, categoryId, title, content,postImage); // Передаємо postImage в конструктор Post
   }
+
 }

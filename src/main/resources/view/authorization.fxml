@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #808080;">
          <children>
-            <Label layoutX="69.0" layoutY="48.0" text="MyBlogify">
+            <Label layoutX="69.0" layoutY="48.0" text="MyBlogify" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font>
@@ -23,11 +23,11 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="94.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="88.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../data/user.png" />
+                  <Image url="@../data/profile.png" />
                </image></ImageView>
-            <Label layoutX="39.0" layoutY="263.0" text="Ще не зареєстровані?">
+            <Label layoutX="39.0" layoutY="263.0" text="Ще не зареєстровані?" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

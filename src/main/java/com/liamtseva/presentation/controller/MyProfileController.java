@@ -46,10 +46,8 @@ public class MyProfileController {
         // Встановлення зображення у profileImageView
         profileImageView.setImage(profileImage);
       } else {
-        profileLabel.setText("Користувач не має зображення профілю");
+        profileLabel.setText("Користувач не аутентифікований");
       }
-    } else {
-      profileLabel.setText("Користувач не аутентифікований");
     }
   }
 

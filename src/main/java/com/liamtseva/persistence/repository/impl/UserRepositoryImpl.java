@@ -84,7 +84,22 @@ public class UserRepositoryImpl implements UserRepository {
       throw new EntityNotFoundException("Error while fetching user by username: " + username, e);
     }
   }
-
+  public List<User> findByUsernameLike(String username) {
+    String query = "SELECT * FROM User WHERE username LIKE ?";
+    List<User> users = new ArrayList<>();
+    try (Connection connection = dataSource.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+      preparedStatement.setString(1, username + "%");
+      try (ResultSet resultSet = preparedStatement.executeQuery()) {
+        while (resultSet.next()) {
+          users.add(mapUser(resultSet));
+        }
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return users;
+  }
   @Override
   public boolean isUsernameExists(String username) {
     String query = "SELECT COUNT(*) FROM User WHERE username = ?";
