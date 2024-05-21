@@ -4,15 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6ef62e2-8ced-4833-a1d2-50d806f2c754" name="Changes" comment="Added the ability to search for users and add images to posts">
+    <list default="true" id="d6ef62e2-8ced-4833-a1d2-50d806f2c754" name="Changes" comment="Searching for bloggers and adding posts has finally been implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/entity/Tag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/contract/TagsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/CommentRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/TagsRepositoryImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/persistence/repository/impl/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AddPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AddPostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/search.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/addPost.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/addPost.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MyProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/liamtseva/presentation/controller/MyProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/create.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ddl.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dml.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dml.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/myProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/myProfile.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +110,12 @@
       <workItem from="1716127522521" duration="8827000" />
       <workItem from="1716141027919" duration="1746000" />
       <workItem from="1716185186230" duration="10501000" />
-      <workItem from="1716214821300" duration="4831000" />
+      <workItem from="1716214821300" duration="4938000" />
+      <workItem from="1716223497170" duration="207000" />
+      <workItem from="1716273384577" duration="10000" />
+      <workItem from="1716276418328" duration="2097000" />
+      <workItem from="1716281047410" duration="4269000" />
+      <workItem from="1716287452530" duration="1297000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented functionality for adding posts and improved the main menu">
       <option name="closed" value="true" />
@@ -117,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716205554391</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Searching for bloggers and adding posts has finally been implemented">
+      <option name="closed" value="true" />
+      <created>1716220536656</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716220536656</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +150,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented functionality for adding posts and improved the main menu" />
     <MESSAGE value="Added the ability to search for users and add images to posts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to search for users and add images to posts" />
+    <MESSAGE value="Searching for bloggers and adding posts has finally been implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Searching for bloggers and adding posts has finally been implemented" />
   </component>
 </project>

@@ -124,21 +124,31 @@ public class UserRepositoryImpl implements UserRepository {
 
   @Override
   public void updateUser(User user) throws EntityNotFoundException {
-    String query = "UPDATE User SET username = ?, password = ?, profile_image = ? WHERE user_id = ?";
+    String sql = "UPDATE User SET username = ?, password = ?, profile_image = ? WHERE user_id = ?";
+
     try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-      preparedStatement.setString(1, user.username());
-      preparedStatement.setString(2, user.password());
-      preparedStatement.setBytes(3, user.profileImage());
-      preparedStatement.setInt(5, user.id());
-      int rowsUpdated = preparedStatement.executeUpdate();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+
+      statement.setString(1, user.username());
+      statement.setString(2, user.password());
+
+      if (user.profileImage() != null) {
+        statement.setBytes(3, user.profileImage());
+      } else {
+        statement.setNull(3, java.sql.Types.BLOB);
+      }
+
+      statement.setInt(4, user.id());
+
+      int rowsUpdated = statement.executeUpdate();
       if (rowsUpdated == 0) {
         throw new EntityNotFoundException("User with id " + user.id() + " not found");
       }
     } catch (SQLException e) {
-      throw new EntityNotFoundException("Error while updating user with id " + user.id(), e);
+      e.printStackTrace();
     }
   }
+
 
   @Override
   public void deleteUser(int id) throws EntityNotFoundException {

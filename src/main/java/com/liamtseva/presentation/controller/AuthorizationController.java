@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class AuthorizationController {
@@ -76,6 +77,7 @@ public class AuthorizationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mainMenu.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/data/MyBlogify.png")));
             stage.setTitle("Особистий блог");
             stage.setScene(new Scene(root));
             stage.showAndWait();

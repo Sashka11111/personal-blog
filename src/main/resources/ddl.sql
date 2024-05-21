@@ -1,8 +1,6 @@
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Post;
-DROP TABLE IF EXISTS Comment;
 DROP TABLE IF EXISTS Category;
-DROP TABLE IF EXISTS Tag;
 
 -- Таблиця користувачів
 CREATE TABLE User (
@@ -25,25 +23,9 @@ CREATE TABLE Post (
 
 );
 
--- Таблиця коментарів
-CREATE TABLE Comment (
-    comment_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    post_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
-    content TEXT NOT NULL,
-    created_at DATE NOT NULL,
-    FOREIGN KEY (post_id) REFERENCES Post(post_id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 -- Таблиця категорій
 CREATE TABLE Category (
     category_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(50) NOT NULL UNIQUE
 );
 
--- Таблиця тегів
-CREATE TABLE Tag (
-    tag_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR(50) NOT NULL UNIQUE
-);
